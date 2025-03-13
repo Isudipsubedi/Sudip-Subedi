@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Github, Code, Database, BrainCircuit, Layout, Cpu } from "lucide-react";
+import { ExternalLink, Github, Code, Database, BrainCircuit, Layout, Cpu, Play } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 
@@ -47,6 +47,7 @@ export function ProjectsSection() {
       technologies: ["C++", "Qt", "MySQL"],
       githubUrl: "https://github.com/tsudipsubedi",
       liveUrl: null,
+      demoUrl: "/demo/office-management"
     },
     {
       id: 2,
@@ -56,6 +57,7 @@ export function ProjectsSection() {
       technologies: ["HTML", "CSS", "JavaScript", "React", "Node.js"],
       githubUrl: "https://github.com/tsudipsubedi",
       liveUrl: null,
+      demoUrl: "/demo/e-commerce"
     },
     {
       id: 3,
@@ -65,6 +67,7 @@ export function ProjectsSection() {
       technologies: ["Python", "TensorFlow", "Keras", "PyTorch"],
       githubUrl: "https://github.com/tsudipsubedi",
       liveUrl: null,
+      demoUrl: "/demo/stock-prediction"
     },
     {
       id: 4,
@@ -74,6 +77,7 @@ export function ProjectsSection() {
       technologies: ["Python", "NLP", "PDF Libraries"],
       githubUrl: "https://github.com/tsudipsubedi",
       liveUrl: null,
+      demoUrl: "/demo/pdf-retriever"
     },
     {
       id: 5,
@@ -83,6 +87,7 @@ export function ProjectsSection() {
       technologies: ["OpenCV", "PyTorch", "BLIP2"],
       githubUrl: "https://github.com/tsudipsubedi",
       liveUrl: null,
+      demoUrl: "/demo/virtual-trial"
     },
     {
       id: 6,
@@ -92,6 +97,7 @@ export function ProjectsSection() {
       technologies: ["OpenCV", "Python", "Web Technologies"],
       githubUrl: "https://github.com/tsudipsubedi",
       liveUrl: null,
+      demoUrl: "/demo/open-edit"
     },
   ];
 
@@ -130,7 +136,7 @@ export function ProjectsSection() {
                 {filteredProjects.map((project, idx) => (
                   <Card 
                     key={project.id} 
-                    className="card-hover overflow-hidden bg-background/70 backdrop-blur-sm h-full flex flex-col shine"
+                    className="card-hover overflow-hidden bg-background/70 backdrop-blur-sm h-full flex flex-col"
                     style={{animationDelay: `${0.1 + idx * 0.1}s`}}
                   >
                     <CardHeader className="pb-2">
@@ -152,18 +158,26 @@ export function ProjectsSection() {
                         ))}
                       </div>
                     </CardContent>
-                    <CardFooter className="flex justify-between gap-4 pt-2">
+                    <CardFooter className="flex justify-between gap-2 pt-2">
                       <Button variant="outline" size="sm" asChild className="flex-1 animated-border">
-                        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1">
                           <Github className="h-4 w-4" />
                           Code
                         </a>
                       </Button>
-                      {project.liveUrl && (
-                        <Button variant="default" size="sm" asChild className="flex-1 glow">
-                          <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                            <ExternalLink className="h-4 w-4" />
+                      {project.demoUrl && (
+                        <Button variant="default" size="sm" asChild className="flex-1 glow-primary">
+                          <a href={project.demoUrl} className="flex items-center gap-1">
+                            <Play className="h-4 w-4" />
                             Demo
+                          </a>
+                        </Button>
+                      )}
+                      {project.liveUrl && (
+                        <Button variant="secondary" size="sm" asChild className="flex-1 glow">
+                          <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1">
+                            <ExternalLink className="h-4 w-4" />
+                            Live
                           </a>
                         </Button>
                       )}

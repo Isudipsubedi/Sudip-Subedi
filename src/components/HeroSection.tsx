@@ -1,5 +1,5 @@
 
-import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowDown, Github, Linkedin, Mail, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function HeroSection() {
@@ -24,24 +24,32 @@ export function HeroSection() {
               <span className="text-gradient">Sudip Subedi</span>
             </h1>
             <div className="h-1 w-20 bg-gradient-to-r from-primary/60 via-primary to-primary/60 my-6 rounded animate-slide-in-up" style={{animationDelay: "0.1s"}}></div>
-            <p className="text-xl md:text-2xl mb-8 max-w-2xl text-muted-foreground animate-slide-in-up typewriter" style={{animationDelay: "0.2s"}}>
-              Computer Engineering Graduate & Data Science Fellow with expertise in Full-Stack Development
-            </p>
+            <div className="animate-slide-in-up" style={{animationDelay: "0.2s"}}>
+              <p className="text-xl md:text-2xl mb-8 max-w-2xl text-muted-foreground professional-typewriter">
+                Computer Engineering Graduate & Data Science Fellow with expertise in Full-Stack Development
+              </p>
+            </div>
             
-            <div className="flex flex-wrap justify-center gap-4 mb-12 animate-slide-in-up" style={{animationDelay: "0.3s"}}>
-              <a href="mailto:subedisudip01@gmail.com" target="_blank" rel="noopener noreferrer">
+            <div className="flex flex-wrap justify-center gap-4 mb-8 animate-slide-in-up" style={{animationDelay: "0.3s"}}>
+              <a href="/files/Sudip_Subedi_CV.pdf" download className="transition-transform duration-300 hover:scale-105">
+                <Button variant="default" size="lg" className="gap-2 rounded-full glow-primary">
+                  <FileText className="h-5 w-5" />
+                  Download CV
+                </Button>
+              </a>
+              <a href="mailto:subedisudip01@gmail.com" target="_blank" rel="noopener noreferrer" className="transition-transform duration-300 hover:scale-105">
                 <Button variant="outline" size="lg" className="gap-2 rounded-full animated-border">
                   <Mail className="h-5 w-5" />
                   Contact Me
                 </Button>
               </a>
-              <a href="https://github.com/tsudipsubedi" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/tsudipsubedi" target="_blank" rel="noopener noreferrer" className="transition-transform duration-300 hover:scale-105">
                 <Button variant="outline" size="lg" className="gap-2 rounded-full glow">
                   <Github className="h-5 w-5" />
                   GitHub
                 </Button>
               </a>
-              <a href="https://linkedin.com/in/jsudipsubedi" target="_blank" rel="noopener noreferrer">
+              <a href="https://linkedin.com/in/jsudipsubedi" target="_blank" rel="noopener noreferrer" className="transition-transform duration-300 hover:scale-105">
                 <Button variant="outline" size="lg" className="gap-2 rounded-full glow">
                   <Linkedin className="h-5 w-5" />
                   LinkedIn
@@ -49,7 +57,7 @@ export function HeroSection() {
               </a>
             </div>
             
-            <div className="animate-bounce-slow mt-16 animate-slide-in-up" style={{animationDelay: "0.4s"}}>
+            <div className="animate-bounce-slow mt-12 animate-slide-in-up" style={{animationDelay: "0.4s"}}>
               <Button
                 variant="ghost"
                 size="icon"
