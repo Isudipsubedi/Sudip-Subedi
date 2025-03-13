@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
+import { Code, Database, Globe, ServerIcon, Cpu } from "lucide-react";
 
 export function SkillsSection() {
   const [activeTab, setActiveTab] = useState("all");
@@ -11,59 +12,64 @@ export function SkillsSection() {
     {
       id: "all",
       label: "All Skills",
+      icon: <Cpu className="h-4 w-4 mr-2" />,
     },
     {
       id: "languages",
       label: "Languages",
+      icon: <Code className="h-4 w-4 mr-2" />,
     },
     {
       id: "frameworks",
       label: "Frameworks & Libraries",
+      icon: <Globe className="h-4 w-4 mr-2" />,
     },
     {
       id: "databases",
       label: "Database Tools",
+      icon: <Database className="h-4 w-4 mr-2" />,
     },
     {
       id: "others",
       label: "Others",
+      icon: <ServerIcon className="h-4 w-4 mr-2" />,
     },
   ];
 
   const skills = [
     // Languages
-    { name: "HTML", category: "languages", level: 90 },
-    { name: "CSS", category: "languages", level: 85 },
-    { name: "JavaScript", category: "languages", level: 88 },
-    { name: "Python", category: "languages", level: 92 },
-    { name: "SQL", category: "languages", level: 90 },
-    { name: "C++", category: "languages", level: 75 },
+    { name: "HTML", category: "languages" },
+    { name: "CSS", category: "languages" },
+    { name: "JavaScript", category: "languages" },
+    { name: "Python", category: "languages" },
+    { name: "SQL", category: "languages" },
+    { name: "C++", category: "languages" },
     
     // Frameworks & Libraries
-    { name: "React.js", category: "frameworks", level: 85 },
-    { name: "Node.js", category: "frameworks", level: 80 },
-    { name: "Express.js", category: "frameworks", level: 82 },
-    { name: "Flask", category: "frameworks", level: 88 },
-    { name: "OpenCV", category: "frameworks", level: 75 },
-    { name: "Matplotlib", category: "frameworks", level: 90 },
-    { name: "Pandas", category: "frameworks", level: 95 },
-    { name: "NumPy", category: "frameworks", level: 90 },
+    { name: "React.js", category: "frameworks" },
+    { name: "Node.js", category: "frameworks" },
+    { name: "Express.js", category: "frameworks" },
+    { name: "Flask", category: "frameworks" },
+    { name: "OpenCV", category: "frameworks" },
+    { name: "Matplotlib", category: "frameworks" },
+    { name: "Pandas", category: "frameworks" },
+    { name: "NumPy", category: "frameworks" },
     
     // Database Tools
-    { name: "MySQL", category: "databases", level: 88 },
-    { name: "PostgreSQL", category: "databases", level: 85 },
-    { name: "Snowflake", category: "databases", level: 75 },
-    { name: "Excel", category: "databases", level: 80 },
-    { name: "Power BI", category: "databases", level: 78 },
-    { name: "ETL Processes", category: "databases", level: 85 },
+    { name: "MySQL", category: "databases" },
+    { name: "PostgreSQL", category: "databases" },
+    { name: "Snowflake", category: "databases" },
+    { name: "Excel", category: "databases" },
+    { name: "Power BI", category: "databases" },
+    { name: "ETL Processes", category: "databases" },
     
     // Others
-    { name: "Git", category: "others", level: 85 },
-    { name: "GitHub", category: "others", level: 88 },
-    { name: "Cloud Computing", category: "others", level: 80 },
-    { name: "Machine Learning", category: "others", level: 85 },
-    { name: "Data Analysis", category: "others", level: 90 },
-    { name: "Agile Methodologies", category: "others", level: 78 },
+    { name: "Git", category: "others" },
+    { name: "GitHub", category: "others" },
+    { name: "Cloud Computing", category: "others" },
+    { name: "Machine Learning", category: "others" },
+    { name: "Data Analysis", category: "others" },
+    { name: "Agile Methodologies", category: "others" },
   ];
 
   const filteredSkills = activeTab === "all" 
@@ -75,19 +81,21 @@ export function SkillsSection() {
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="mb-4">Skills & Expertise</h2>
-            <div className="h-1 w-20 bg-primary mx-auto rounded"></div>
+            <h2 className="mb-4 animate-slide-in-up">Skills & Expertise</h2>
+            <div className="h-1 w-20 bg-primary mx-auto rounded animate-slide-in-up"></div>
           </div>
 
           <Tabs defaultValue="all" value={activeTab} onValueChange={setActiveTab} className="w-full">
-            <div className="flex justify-center mb-8">
+            <div className="flex justify-center mb-8 animate-slide-in-up" style={{animationDelay: "0.1s"}}>
               <TabsList className="grid grid-flow-col auto-cols-max gap-2 bg-transparent h-auto p-1 overflow-x-auto max-w-full scrollbar-hide">
-                {skillCategories.map((category) => (
+                {skillCategories.map((category, index) => (
                   <TabsTrigger
                     key={category.id}
                     value={category.id}
-                    className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground transition-all rounded-full px-4 py-2"
+                    className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground transition-all rounded-full px-4 py-2 flex items-center"
+                    style={{animationDelay: `${0.1 + index * 0.05}s`}}
                   >
+                    {category.icon}
                     {category.label}
                   </TabsTrigger>
                 ))}
@@ -95,23 +103,19 @@ export function SkillsSection() {
             </div>
 
             {skillCategories.map((category) => (
-              <TabsContent key={category.id} value={category.id} className="mt-0">
-                <Card className="bg-background/60 backdrop-blur-sm border border-border/50">
+              <TabsContent key={category.id} value={category.id} className="mt-0 animate-fade-in">
+                <Card className="bg-background/60 backdrop-blur-sm border border-border/50 overflow-hidden">
                   <CardContent className="p-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="flex flex-wrap gap-3">
                       {filteredSkills.map((skill, index) => (
-                        <div key={index} className="space-y-2">
-                          <div className="flex justify-between items-center">
-                            <span className="font-medium">{skill.name}</span>
-                            <span className="text-sm text-muted-foreground">{skill.level}%</span>
-                          </div>
-                          <div className="h-2 bg-secondary rounded-full overflow-hidden">
-                            <div 
-                              className="h-full bg-primary transition-all duration-1000 ease-out rounded-full"
-                              style={{ width: `${skill.level}%` }}
-                            ></div>
-                          </div>
-                        </div>
+                        <Badge 
+                          key={index} 
+                          variant="outline"
+                          className="py-2 px-3 text-base bg-secondary/40 hover:bg-secondary transition-all duration-300 animate-scale-in card-hover"
+                          style={{animationDelay: `${0.1 + index * 0.02}s`}}
+                        >
+                          {skill.name}
+                        </Badge>
                       ))}
                     </div>
                   </CardContent>
