@@ -18,7 +18,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter basename="/Sudip-Subedi">
         <Routes>
-          <Route path="/" element={<Index />} />
+          <Route path="/Sudip-Subedi" element={<Index />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="*" element={<NotFound />} />
