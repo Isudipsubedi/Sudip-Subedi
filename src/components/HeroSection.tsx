@@ -26,7 +26,7 @@ export function HeroSection() {
             <div className="h-1 w-20 bg-gradient-to-r from-primary/60 via-primary to-primary/60 my-6 rounded animate-slide-in-up" style={{animationDelay: "0.1s"}}></div>
             <div className="animate-slide-in-up" style={{animationDelay: "0.2s"}}>
               <p className="text-xl md:text-2xl mb-8 max-w-2xl text-muted-foreground professional-typewriter">
-                Computer Engineering Graduate & Data Science Fellow with expertise in Full-Stack Development
+                Computer Engineer, Full-Stack Developer, Data Analytics
               </p>
             </div>
             

@@ -61,7 +61,8 @@ export function AboutSection() {
                       <span className="font-semibold">Data Science Fellow</span> at Fellowship.ai
                     </p>
                     <p className="text-muted-foreground">
-                      San Francisco (Remote) | Jan 2023 - Present
+                      San Francisco (Remote) 
+                      <p> Jan 2023 - Present </p>
                     </p>
                   </div>
                 </div>
